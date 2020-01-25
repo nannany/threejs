@@ -2,6 +2,7 @@
 <head>
     <meta charset="utf-8"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/105/three.min.js"></script>
+    <script src="GLTFLoader.js"></script>
     <script>
         // ページの読み込みを待つ
         window.addEventListener('load', init);
@@ -37,14 +38,21 @@
             const box = new THREE.Mesh(geometry, material);
             scene.add(box);
 
+            const loader = new THREE.GLTFLoader();
+            loader.load("", function (gltf) {
+                scene.add(gltf.scene);
+            }, undefined, function (error) {
+                console.error(error);
+            }
+
             tick();
 
             // 毎フレーム時に実行されるループイベントです
             function tick() {
                 box.rotation.y += 0.01
 
-                box.position.x = typeof data === "undefined" ? 0 : data.time.slice(-2)* 10;
-                box.position.y = typeof data === "undefined" ? 0 : data.time.slice(-2)* 5;
+                box.position.x = typeof data === "undefined" ? 0 : data.time.slice(-2) * 10;
+                box.position.y = typeof data === "undefined" ? 0 : data.time.slice(-2) * 5;
 
                 // box.rotation.y += typeof data === "undefined" ? 0 : data.time.slice(-2);
                 console.log(box.position)
