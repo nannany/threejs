@@ -25,10 +25,10 @@ function init() {
 
   // Load GLTF or GLB
   const loader = new THREE.GLTFLoader();
-  const url = "http://localhost:8080/building.glb";
+  const buildingUrl = "http://localhost:8080/building.glb";
 
   loader.load(
-    url,
+    buildingUrl,
     function(gltf) {
       const model = gltf.scene;
       model.scale.set(400.0, 400.0, 400.0);
@@ -49,8 +49,8 @@ function init() {
       console.log(error);
     }
   );
-  const droneUrl = "http://localhost:8080/drone_costum.glb";
 
+  const droneUrl = "http://localhost:8080/drone_costum.glb";
   let drone;
   // ドローンロード
   loader.load(
