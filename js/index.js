@@ -36,6 +36,7 @@ function init() {
             model.position.set(0, -400, 0);
 
             cube = gltf.scene.children[4];
+
             cube01 = cube.children[0]
             cube02 = cube.children[1]
 
@@ -43,11 +44,11 @@ function init() {
             console.log(cube01)
             cube01.material.opacity = 0.5;
             cube01.material.transparent = true;
+            cube01.material.side = THREE.DoubleSide;
             cube02.material.opacity = 0.5;
             cube02.material.transparent = true;
+            cube02.material.side = THREE.DoubleSide;
             scene.add(gltf.scene);
-
-            // model["test"] = 100;
         },
         function (error) {
             console.log('An error happened');
